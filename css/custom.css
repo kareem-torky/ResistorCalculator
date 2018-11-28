@@ -43,4 +43,8 @@ a:hover {
     font-weight: 700;
 }
 
+.select-row {
+    min-height: 350px;
+}
+
 
