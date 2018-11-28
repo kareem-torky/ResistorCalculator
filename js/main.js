@@ -1,5 +1,6 @@
 
-var options_arr = [];
+var colors_arr = ['Black', 'Brown', 'Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Violet', 'Gray', 'White'];
+var multipliers_arr = ['1', '10', '100', '1k', '10k', '100k', '1M', '10M', '100M', '1T'];
 
 document.getElementById('calculate-btn').addEventListener('click', calculateVal);
 options_arr = document.getElementsByTagName('a');
@@ -20,8 +21,6 @@ function getColor(e){
     }
 }
 
-var colors_arr = ['Black', 'Brown', 'Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Violet', 'Gray', 'White'];
-var multipliers_arr = ['1', '10', '100', '1k', '10k', '100k', '1M', '10M', '100M', '1T'];
 
 function calculateVal(){
     var fr = document.getElementById('first-ring').innerHTML;
@@ -35,21 +34,20 @@ function calculateVal(){
     }
 
     for(var i=0; i<10; i++){
-        if(fr === colors_arr[i]) {
-            var fr_val = i;
-            alert(fr_val);
-            //total_val += fr_val;
+        if(fr == colors_arr[i]) {
+            var fr_val = i.toString();
+            total_val += fr_val;
         }
         if(sr == colors_arr[i]) {
-            var sr_val = i;
-            //total_val += sr_val;
+            var sr_val = i.toString();
+            total_val += sr_val;
         }
         if(tr == colors_arr[i]) {
             var tr_val = multipliers_arr[i];
-            //total_val += ' *';
-            //total_val += tr_val;
+            total_val += ' *';
+            total_val += tr_val;
         }
     }
 
-    //document.getElementById('result').innerHTML = '<p>'+ total_val +'</p>';
+    document.getElementById('result').innerHTML = '<p>'+ total_val +'</p>';
 }
