@@ -16,10 +16,13 @@ function getColor(e){
     var class_name = e.target.className;
     if(class_name == 'f-r'){
         document.getElementById('first-ring').innerHTML = color;
+        document.getElementById('first-ring').style.fontWeight = "bolder";
     } else if(class_name == 's-r'){
-        document.getElementById('second-ring').innerHTML = color;       
+        document.getElementById('second-ring').innerHTML = color;
+        document.getElementById('second-ring').style.fontWeight = "bolder";
     } else if(class_name == 't-r'){
-        document.getElementById('third-ring').innerHTML = color;       
+        document.getElementById('third-ring').innerHTML = color;
+        document.getElementById('third-ring').style.fontWeight = "bolder";
     } else {
         return false;
     }
