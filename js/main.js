@@ -3,18 +3,22 @@ var colors_arr = ['Black', 'Brown', 'Red', 'Orange', 'Yellow', 'Green', 'Blue', 
 var multipliers_arr = ['1', '10', '100', '1k', '10k', '100k', '1M', '10M', '100M', '1T'];
 
 document.getElementById('calculate-btn').addEventListener('click', calculateVal);
-options_arr = document.getElementsByTagName('a');
-options_arr.forEach(addEventListener('click', getColor));
+var aTags = document.querySelectorAll('a');
+
+
+for(tag in aTags){
+    aTags[tag].addEventListener('click', getColor);
+}
+
 
 function getColor(e){
     var color = e.target.innerHTML;
-    var classes = e.target.parentElement.className;
-    var classes_arr = classes.split(" ");
-    if(classes_arr[1] == 'f-r'){
+    var class_name = e.target.className;
+    if(class_name == 'f-r'){
         document.getElementById('first-ring').innerHTML = color;
-    } else if(classes_arr[1] == 's-r'){
+    } else if(class_name == 's-r'){
         document.getElementById('second-ring').innerHTML = color;       
-    } else if(classes_arr[1] == 't-r'){
+    } else if(class_name == 't-r'){
         document.getElementById('third-ring').innerHTML = color;       
     } else {
         return false;
@@ -35,19 +39,18 @@ function calculateVal(){
 
     for(var i=0; i<10; i++){
         if(fr == colors_arr[i]) {
-            var fr_val = i.toString();
-            total_val += fr_val;
+            var fr_val = i;
         }
         if(sr == colors_arr[i]) {
-            var sr_val = i.toString();
-            total_val += sr_val;
+            var sr_val = i;
         }
         if(tr == colors_arr[i]) {
-            var tr_val = multipliers_arr[i];
-            total_val += ' *';
-            total_val += tr_val;
+            var tr_val = i;
         }
     }
 
-    document.getElementById('result').innerHTML = '<p>'+ total_val +'</p>';
+    total_val = (sr_val + (fr_val*10)) * Math.pow(10, tr_val); 
+    document.getElementById('result').innerHTML = '<p class="result"> R = <span>'+
+                                                    total_val +
+                                                    '</span> Ohms</p>';
 }
